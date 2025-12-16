@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Gradient Animation for Hero */
+@keyframes gradientBG {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientBG 15s ease infinite;
+}
+
+/* Typing effect for Hero subtitle */
+.typing {
+  border-right: 2px solid white;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 3s steps(40, end) infinite, blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  0%, 50%, 100% { width: 0; }
+  25%, 75% { width: 100%; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
