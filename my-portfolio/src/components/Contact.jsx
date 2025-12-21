@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [loading, setLoading] = useState(false);
   const [statusMsg, setStatusMsg] = useState("");
 
@@ -25,11 +21,13 @@ function Contact() {
     setStatusMsg("");
 
     try {
-      const res = await fetch("http://localhost:5000/api/contact", {
+      // ✅ Note the URL change to the serverless function
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+
       const data = await res.json();
       if (data.success) {
         setStatusMsg("Message sent successfully. I will get back to you soon!");
@@ -38,6 +36,7 @@ function Contact() {
         setStatusMsg(data.msg || "Failed to send message.");
       }
     } catch (err) {
+      console.log(err);
       setStatusMsg("Server error. Please try again later.");
     }
 
@@ -53,18 +52,6 @@ function Contact() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        {/* Animated Borders */}
-        <motion.div
-          className="absolute inset-0 border-2 border-blue-400 rounded-3xl pointer-events-none"
-          animate={{ rotate: [0, 360] }}
-          transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-        />
-        <motion.div
-          className="absolute inset-0 border-2 border-purple-400 rounded-3xl pointer-events-none"
-          animate={{ rotate: [360, 0] }}
-          transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
-        />
-
         {/* Contact Card */}
         <div className="relative p-8 bg-gray-800/70 backdrop-blur-md rounded-3xl border border-gray-700 shadow-lg hover:shadow-2xl transition transform hover:scale-105">
           <h2 className="text-3xl font-extrabold mb-4 text-center text-blue-400">
@@ -99,7 +86,6 @@ function Contact() {
               onChange={handleChange}
               className="p-3 rounded-xl bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
             />
-
             <button
               type="submit"
               disabled={loading}

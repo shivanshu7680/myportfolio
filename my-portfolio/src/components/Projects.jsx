@@ -17,7 +17,7 @@ const project = {
     "Leaflet.js",
     "PostgreSQL/PostGIS",
   ],
-  link: "https://newproject-ly7y.vercel.app",
+  link: "https://newproject-muac.vercel.app", // Updated link
   image: newProjectImg,
 };
 
@@ -57,7 +57,9 @@ function Projects() {
           )}
 
           {/* Title */}
-          <h3 className="text-lg font-bold mb-2 text-white text-center">{project.title}</h3>
+          <h3 className="text-lg font-bold mb-2 text-white text-center">
+            {project.title}
+          </h3>
 
           {/* Description */}
           <p className="text-gray-300 mb-3 text-sm leading-relaxed text-center">
