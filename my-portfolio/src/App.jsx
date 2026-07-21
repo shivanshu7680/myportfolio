@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Analytics } from "@vercel/analytics/react";
 import Preloader from "./components/Preloader.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
@@ -62,6 +63,8 @@ function App() {
           </motion.section>
         </motion.div>
       )}
+
+      <Analytics />
     </>
   );
 }
