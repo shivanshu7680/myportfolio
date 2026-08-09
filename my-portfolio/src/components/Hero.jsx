@@ -221,7 +221,7 @@ function Hero() {
             <motion.img
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.4 }}
-              src="/my%20image.jpg"
+              src="/my-image.jpg"
               alt="Shivanshu Mishra"
               className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full object-cover"
             />
